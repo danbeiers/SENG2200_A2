@@ -40,7 +40,7 @@ public class Point {
         this.y = y;
     }
 
-    //Method to calculate the distance to the origin using Pythagoras's theorem and return the value as a double.
+    //Method to calculate the distance to the origin using Pythagoras's theorem and return the value as a double. Return will always be a non-negative.
     public double distanceToOrigin(){
         return Math.sqrt((x*x) + (y*y));
     }

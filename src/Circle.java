@@ -12,6 +12,7 @@ public class Circle extends PlanarShape{
         this.centre = new Point();
         this.radius = 0;
     }
+
     public Circle(double xVal, double yVal, double radius_) {
         this.centre = new Point(xVal,yVal);
         this.radius = radius_;
