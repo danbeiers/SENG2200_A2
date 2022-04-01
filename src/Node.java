@@ -14,9 +14,15 @@ public class Node<T> {
 
     //Empty constructor
     public Node(){
-        prev = null;
-        next = null;
-        data = null;
+        this.prev = null;
+        this.next = null;
+        this.data = null;
+    }
+
+    public Node(T t){
+        this.prev = null;
+        this.next = null;
+        this.data = t;
     }
 
     //Generic getters and setters for nodes and payload

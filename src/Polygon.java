@@ -21,6 +21,19 @@ public class Polygon extends PlanarShape{
         originPoint = null;
         vertices = new Point[0];
     }
+    public Polygon(double[] coords){
+        originPoint = null;
+        vertices = new Point[0];
+        if(coords[0] == 0){
+            originPoint = null;
+            vertices = new Point[0];
+        }
+
+        for(int i = 1; i < coords.length; i += 2) {
+            Point p = new Point(coords[i],coords[i+1]);
+            this.addPoint(p);
+        }
+    }
 
     //Standard getters and setters
     public Point getOriginPoint() {

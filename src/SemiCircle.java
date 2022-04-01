@@ -15,6 +15,12 @@ public class SemiCircle extends PlanarShape{
         this.radius = Math.sqrt((Math.pow(this.p0.getX() - this.p1.getX(),2) + (Math.pow(this.p0.getY() - this.p1.getY(),2))));
     }
 
+    public SemiCircle(double[] d) {
+        this.p0 = new Point(d[0],d[1]);
+        this.p1 = new Point(d[2],d[3]);
+        this.radius = Math.sqrt((Math.pow(this.p0.getX() - this.p1.getX(),2) + (Math.pow(this.p0.getY() - this.p1.getY(),2))));
+    }
+
     public double area() {
         return (Math.PI * Math.pow(this.radius,2) / 2 );
     }

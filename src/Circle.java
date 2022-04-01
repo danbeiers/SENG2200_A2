@@ -18,6 +18,10 @@ public class Circle extends PlanarShape{
         this.radius = radius_;
     }
 
+    public Circle(double[] d) {
+        this.centre = new Point(d[0],d[1]);
+        this.radius = d[2];
+    }
     public double area() {
         return (Math.PI * Math.sqrt(this.radius));
     }
