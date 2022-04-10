@@ -1,26 +1,30 @@
 /*
 Author: Daniel Beiers c3039134
-Date:
+Date: 10.4.2022
 Project: SENG2200 Assignment 2
 Description:    This class is an object designed to hold information regarding the vertices of a polygon.
                 An array is initialised, and each element is a Point object.
                 The points of the polygon are fed into the array by addPoint(Point p).
                 This class also has methods to find the area of the polygon and return a double,
                 the distance to origin as a double and to output the points of the polygon as a string.
+                It is a child class of PlanarShape and implements the abstract methods required.
 */
 public class Polygon extends PlanarShape{
 
     //Private variables
     //'originPoint' holds a Point that is determined to be closest to the origin. Updated as every Point is added.
     //'vertices' is an array that holds the vertices of the polygon.
-    //'TOLERANCE_FACTOR' is the value by which polygons are compared and attributed to be the same area.
     private Point originPoint;
     private Point[] vertices;
 
+    //Default constructor
     public Polygon(){
         originPoint = null;
         vertices = new Point[0];
     }
+
+    //Constructor that takes a double array as a parameter
+    //Pre-Condition: If the first element of the array is zero, creates a new point
     public Polygon(double[] coords){
         originPoint = null;
         vertices = new Point[0];

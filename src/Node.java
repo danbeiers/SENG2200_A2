@@ -1,6 +1,6 @@
 /*
 Author: Daniel Beiers c3039134
-Date:
+Date: 10.4.2022
 Project: SENG2200 Assignment 2
 Description: This class defines a node to be used as data carrier that references an object payload, and also points to a
 'next' and 'previous' node.
@@ -19,6 +19,7 @@ public class Node<T> {
         this.data = null;
     }
 
+    //Constructor that takes generic data object as parameter
     public Node(T t){
         this.prev = null;
         this.next = null;
