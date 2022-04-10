@@ -54,10 +54,16 @@ public class LinkedList<T> implements Iterable<T> {
     }
 
     //Method to return the data item at the start of the linked list.
-    //Pre-Condition: None
-    //Post-Condition: Returns null if empty list, otherwise the data contained by the first node.
+    //Pre-Condition: If list is empty, return null.
+    //Post-Condition: Returns null if empty list, otherwise the data contained by the first node and removes the node from list.
     public T getHead() {
-        return this.sentinel.getData();
+        Node<T> oldNode = this.sentinel.getNext();
+        if(oldNode == this.sentinel) { return null; }
+
+        this.sentinel.setNext(oldNode.getNext());
+        oldNode.getNext().setPrev(this.sentinel);
+
+        return oldNode.getData();
     }
 
     //Any call to this method gets re-directed to the 'append()' method with the same data object parameter.
