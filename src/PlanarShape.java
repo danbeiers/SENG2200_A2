@@ -5,7 +5,7 @@ Project: SENG2200 Assignment 2
 Description: PlanarShapes is an abstract class. It ensures that all extended classes contain the necessary
 methods to compare its children to one another.
  */
-public abstract class PlanarShape  implements Comparable<PlanarShape> {
+public abstract class PlanarShape implements Comparable<PlanarShape> {
 
     public abstract double area();
 
@@ -13,6 +13,7 @@ public abstract class PlanarShape  implements Comparable<PlanarShape> {
 
     public abstract String toString();
 
+    @Override
     public int compareTo(PlanarShape p) {
 
         double tolerance;

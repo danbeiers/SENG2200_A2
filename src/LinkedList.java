@@ -1,14 +1,17 @@
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class LinkedList<T> implements Iterable<T> {
 
-    private Node<T> sentinel;
-    private int size;
+    protected Node<T> sentinel;
+    protected int size;
 
     public LinkedList() {
-        sentinel = new Node();
-        size = 0;
+        this.sentinel = new Node<T>();
+        this.sentinel.setNext(this.sentinel);
+        this.sentinel.setPrev(this.sentinel);
+        this.size = 0;
     }
 
     public int getSize() {
@@ -16,25 +19,28 @@ public class LinkedList<T> implements Iterable<T> {
     }
 
     public void append(T t) {
-        Node<T> node_ = this.sentinel;
-        while (node_.getNext() != null) {
-            node_ = node_.getNext();
-        }
-
-        node_.setNext(new Node<T>(t));
+        Node<T> node_ = new Node<T>(t);
+        node_.setNext(this.sentinel);
+        node_.setPrev(this.sentinel.getPrev());
+        this.sentinel.getPrev().setNext(node_);
+        this.sentinel.setPrev(node_);
         this.size++;
     }
 
     public void prepend(T t) {
         Node<T> node_ = new Node<T>(t);
         node_.setNext(this.sentinel.getNext());
+        node_.setPrev(this.sentinel);
+        this.sentinel.getNext().setPrev(node_);
         this.sentinel.setNext(node_);
         this.size++;
+
+
     }
 
 
     public T getHead() {
-        return null;
+        return this.sentinel.getData();
     }
 
     public void insert(T t) {
@@ -57,13 +63,20 @@ public class LinkedList<T> implements Iterable<T> {
 
             @Override
             public boolean hasNext() {
-                return !(current.getNext() == sentinel || current.getNext() == null );
+                if(current.getNext() == null) return false;
+
+                if(current.getNext() == sentinel){
+                    current = sentinel;
+                    return false;
+                }
+
+                return true;
             }
 
             @Override
             public T next() {
                 if (!hasNext()) {
-                    throw new NoSuchElementException();
+                    throw new NoSuchElementException("No more elements.");
                 }
                 current = current.getNext();
                 return current.getData();

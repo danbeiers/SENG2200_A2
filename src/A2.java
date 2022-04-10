@@ -8,11 +8,13 @@ public class A2 {
     public static void main(String[] args) {
         //A new list object created to hold data
         LinkedList<PlanarShape> unsortedList = new LinkedList<PlanarShape>();
+        SortedLinkedList<PlanarShape> sortedList = new SortedLinkedList<PlanarShape>();
+
         Iterator<PlanarShape> it = unsortedList.iterator();
 
         try {
             //File file_ = new File(args[0]);
-            File file_ = new File("C:\\Users\\User\\IdeaProjects\\SENG2200_A2\\src\\b.txt");
+            File file_ = new File("C:\\Users\\User\\IdeaProjects\\SENG2200_A2\\src\\a.txt");
             Scanner myReader = new Scanner(file_);
             //Loop to parse the data within the text file.
             while (myReader.hasNext()) {
@@ -28,18 +30,22 @@ public class A2 {
                     temp[i] = myReader.nextDouble();
                     array = temp;
                 }
-                //System.out.println(shapeFactory((char) type,array));
                 unsortedList.append(shapeFactory((char) type,array));
-
             }
 
             System.out.println("Unsorted list");
             while(it.hasNext()){
+                PlanarShape next = it.next();
+                System.out.println(next);
+                sortedList.insertInOrder(next);
+            }
+
+            it = sortedList.iterator();
+            System.out.println("Sorted list");
+            while(it.hasNext()){
                 System.out.println(it.next());
             }
 
-            //System.out.println("Sorted list");
-            //System.out.println((unsortedList.insertInOrder()));
             myReader.close();
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred with locating file.");
